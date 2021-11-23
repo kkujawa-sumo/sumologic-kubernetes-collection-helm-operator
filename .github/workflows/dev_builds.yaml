@@ -18,6 +18,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2.3.4
+      
+      - name: test
+        run: sudo apt-get update
 
       - name: Install Operator Package Manager (OPM)
         run: sudo wget -q "https://github.com/operator-framework/operator-registry/releases/download/${OPM_VERSION}/linux-amd64-opm" -O /usr/bin/opm && \
