@@ -22,11 +22,13 @@ jobs:
       - name: test
         run: sudo apt-get update
 
-      - name: Install Operator Package Manager (OPM)
-        run: sudo wget -q "https://github.com/operator-framework/operator-registry/releases/download/${OPM_VERSION}/linux-amd64-opm" -O /usr/bin/opm && \
-          sudo chmod +x /usr/bin/opm
+      - name: Download Operator Package Manager (OPM)
+        run: sudo wget -q "https://github.com/operator-framework/operator-registry/releases/download/${OPM_VERSION}/linux-amd64-opm" -O /usr/bin/opm
         env:
           OPM_VERSION: v1.14.3
+
+      - name: Make executable binary of Operator Package Manager (OPM)
+        run: sudo chmod +x /usr/bin/opm
 
       - name: Checkout submodules
         run: git submodule update --init
